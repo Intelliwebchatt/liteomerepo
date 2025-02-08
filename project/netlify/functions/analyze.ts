@@ -6,7 +6,6 @@ const openai = new OpenAI({
 });
 
 export const handler: Handler = async (event) => {
-  // Add CORS headers
   const headers = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
@@ -14,7 +13,6 @@ export const handler: Handler = async (event) => {
     'Access-Control-Allow-Methods': 'POST, OPTIONS'
   };
 
-  // Handle preflight requests
   if (event.httpMethod === 'OPTIONS') {
     return {
       statusCode: 204,
@@ -24,7 +22,6 @@ export const handler: Handler = async (event) => {
   }
 
   try {
-    // Only allow POST requests
     if (event.httpMethod !== 'POST') {
       return {
         statusCode: 405,
@@ -36,7 +33,6 @@ export const handler: Handler = async (event) => {
       };
     }
 
-    // Check if API key is configured
     if (!process.env.OPENAI_API_KEY) {
       console.error('OpenAI API key is not configured');
       return {
@@ -49,7 +45,6 @@ export const handler: Handler = async (event) => {
       };
     }
 
-    // Parse request body
     if (!event.body) {
       return {
         statusCode: 400,
@@ -61,22 +56,7 @@ export const handler: Handler = async (event) => {
       };
     }
 
-    let parsedBody;
-    try {
-      parsedBody = JSON.parse(event.body);
-    } catch (e) {
-      return {
-        statusCode: 400,
-        headers,
-        body: JSON.stringify({ 
-          error: 'Invalid request',
-          details: 'Invalid JSON in request body'
-        })
-      };
-    }
-
-    const { text } = parsedBody;
-    
+    const { text } = JSON.parse(event.body);
     if (!text) {
       return {
         statusCode: 400,
@@ -88,20 +68,37 @@ export const handler: Handler = async (event) => {
       };
     }
 
+    const prompt = `You are the Forensic AI Deception Analyzer. Analyze the following statement strictly following this format:
+
+🎯 Deception Score: XX% (Highly Likely Truthful ✅ / Mostly Truthful 🙂 / Uncertain 🤔 / Likely Deceptive ⚠️ / Highly Likely Deceptive 🚩)
+
+🔍 Key Indicators:
+- Example: "I think I was home..."
+- Reason: Shows uncertainty (hedging language).
+
+❓ Suggested Follow-Up Questions:
+- 🤔 “Can you confirm exactly where you were?”
+- 📅 “What did you do right before that time?”
+- 🗣️ “Did anyone see you or talk to you then?”
+
+Analyze this statement: "${text}"`;
+
     const completion = await openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-4o-mini",
       messages: [
         {
           role: "system",
-          content: "You are an expert in deception detection, analyzing text for signs of deception based on scientific research. Provide a detailed analysis with confidence levels and reasoning."
+          content: "You are an expert in deception detection."
         },
         {
           role: "user",
-          content: text
+          content: prompt
         }
       ],
-      temperature: 0.7,
-      max_tokens: 1000
+      temperature: 0.2,
+      top_p: 0.2,
+      max_tokens: 750,
+      stop: ["---"]
     });
 
     if (!completion.choices?.[0]?.message?.content) {
@@ -124,20 +121,6 @@ export const handler: Handler = async (event) => {
     };
   } catch (error: any) {
     console.error('Server Error:', error);
-    
-    // Handle OpenAI API errors
-    if (error instanceof OpenAI.APIError) {
-      return {
-        statusCode: error.status || 500,
-        headers,
-        body: JSON.stringify({ 
-          error: 'OpenAI API Error',
-          details: error.message || 'Unknown OpenAI API error'
-        })
-      };
-    }
-    
-    // Handle all other errors
     return {
       statusCode: 500,
       headers,
@@ -147,4 +130,4 @@ export const handler: Handler = async (event) => {
       })
     };
   }
-}
+};
