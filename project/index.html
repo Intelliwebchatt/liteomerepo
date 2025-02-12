@@ -12,6 +12,7 @@
         overflow-y: scroll;
         background-color: #000;
         color: #fff;
+        font-family: 'Courier New', Courier, monospace;
       }
       footer {
         background-color: #111;
@@ -40,32 +41,38 @@
       }
       .loading {
         display: none;
-        font-size: 16px;
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         color: #0f0;
-        text-shadow: 0 0 5px #0f0, 0 0 10px #0f0;
+        font-size: 20px;
+        letter-spacing: 2px;
+        text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
       }
 
       .loading::before {
-        content: '█ █ █ Loading █ █ █';
-        animation: flicker 0.2s infinite;
+        content: 'ANALYZING DATA...';
+        display: block;
+        animation: glitch 1s infinite linear;
       }
 
-      @keyframes flicker {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.3; }
+      @keyframes glitch {
+        0% { transform: translate(0); opacity: 1; }
+        20% { transform: translate(-3px, 2px); opacity: 0.8; }
+        40% { transform: translate(3px, -2px); opacity: 0.6; }
+        60% { transform: translate(-2px, 1px); opacity: 0.8; }
+        80% { transform: translate(2px, -1px); opacity: 0.9; }
+        100% { transform: translate(0); opacity: 1; }
       }
 
-      .response-box {
-        max-height: 300px;
+      #root {
+        max-height: 70vh;
         overflow-y: auto;
+        padding: 20px;
         background-color: #111;
-        padding: 10px;
-        margin: 20px;
         border: 1px solid #444;
+        margin: 20px;
         border-radius: 5px;
         white-space: pre-wrap;
       }
@@ -73,7 +80,6 @@
   </head>
   <body>
     <div id="root"></div>
-    <div class="response-box" id="responseBox">API Response will appear here...</div>
     <footer>
       <a href="https://intelliaipro.com" target="_blank">Developed by Intelliaipro.com</a>
       <div class="disclaimer">For research purposes only. Disclaimer applies.</div>
@@ -83,15 +89,15 @@
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         const loading = document.getElementById('loading');
-        const responseBox = document.getElementById('responseBox');
+        const root = document.getElementById('root');
 
         document.addEventListener('fetchStart', () => loading.style.display = 'block');
         document.addEventListener('fetchEnd', () => loading.style.display = 'none');
 
         // Simulate API response for demonstration
         setTimeout(() => {
-          const fakeResponse = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n'.repeat(20);
-          responseBox.textContent = fakeResponse;
+          const fakeResponse = 'Analyzing data...\n' + 'Result: '.repeat(50);
+          root.textContent = fakeResponse;
         }, 3000);
       });
     </script>
