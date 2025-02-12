@@ -4,10 +4,33 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <title>Lie to Me</title>
+    <style>
+      footer {
+        background-color: #111;
+        color: #fff;
+        padding: 15px 0;
+        text-align: center;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+      }
+      footer a {
+        color: #00bfff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      footer a:hover {
+        color: #1e90ff;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
+    <footer>
+      <a href="https://intelliaipro.com" target="_blank">Developed by Intelliaipro.com</a>
+    </footer>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
