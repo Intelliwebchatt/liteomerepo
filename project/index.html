@@ -29,6 +29,18 @@
         color: #ccc;
         margin-top: 5px;
       }
+      .loading {
+        display: none;
+        color: #00bfff;
+        font-size: 14px;
+        animation: pulse 1.5s infinite;
+      }
+
+      @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.5; }
+        100% { opacity: 1; }
+      }
     </style>
   </head>
   <body>
@@ -36,7 +48,16 @@
     <footer>
       <a href="https://intelliaipro.com" target="_blank">Developed by Intelliaipro.com</a>
       <div class="disclaimer">For research purposes only. Disclaimer applies.</div>
+      <div class="loading" id="loading">Loading...</div>
     </footer>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Simulate loading animation during fetch requests
+      document.addEventListener('DOMContentLoaded', () => {
+        const loading = document.getElementById('loading');
+        document.addEventListener('fetchStart', () => loading.style.display = 'block');
+        document.addEventListener('fetchEnd', () => loading.style.display = 'none');
+      });
+    </script>
   </body>
 </html>
