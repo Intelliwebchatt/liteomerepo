@@ -6,10 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lie to Me</title>
     <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-y: scroll;
+        background-color: #000;
+        color: #fff;
+        font-family: 'Courier New', Courier, monospace;
+      }
       footer {
         background-color: #111;
         color: #fff;
-        padding: 15px 0;
+        padding: 10px 0;
         text-align: center;
         position: fixed;
         width: 100%;
@@ -25,9 +33,12 @@
         color: #1e90ff;
       }
       .disclaimer {
-        font-size: 12px;
+        font-size: 10px;
         color: #ccc;
-        margin-top: 5px;
+        margin-top: 3px;
+      }
+      #root {
+        padding-bottom: 50px; /* Ensure content doesn't overlap with footer */
       }
     </style>
   </head>
