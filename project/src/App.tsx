@@ -33,6 +33,7 @@ const App: React.FC = () => {
         }),
       });
       const data = await response.json();
+      if (!data.content) throw new Error('No content in response');
       return data.content;
     } catch (error) {
       console.error('Function Error:', error);
