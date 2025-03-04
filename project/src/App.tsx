@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './index.css';
 
-// Sample tire data (expand this or replace with a database/API)
 const tireData: Record<string, { factory: string; largest: string }> = {
   '2012 nissan altima': {
     factory: '215/60R16 (16-inch wheels, 6.5J width, 5x114.3 PCD, 40mm offset)',
@@ -24,29 +23,19 @@ const App: React.FC = () => {
 
   const callOpenAI = async (prompt: string, history: { role: string; content: string }[] = []) => {
     try {
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      const response = await fetch('/.netlify/functions/openai', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`, // Use Netlify env var
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'gpt-3.5-turbo',
-          messages: [
-            {
-              role: 'system',
-              content: 'You are a tire and wheel expert named Shane. Identify the vehicle from the user’s input (e.g., "2012 nissam altma" → "2012 nissan altima") and provide tire/wheel info if asked. Use this data: ' + JSON.stringify(tireData) + '. For follow-ups, answer naturally based on the vehicle context.',
-            },
-            ...history,
-            { role: 'user', content: prompt },
-          ],
-          temperature: 0.7,
+          prompt,
+          history,
+          tireData,
         }),
       });
       const data = await response.json();
-      return data.choices[0].message.content;
+      return data.content;
     } catch (error) {
-      console.error('OpenAI Error:', error);
+      console.error('Function Error:', error);
       return 'Sorry, I couldn’t process that. Try again!';
     }
   };
@@ -61,7 +50,6 @@ const App: React.FC = () => {
 
     const gptResponse = await callOpenAI(input, messages);
 
-    // If no vehicle is set yet, try to extract it from GPT’s response
     if (!vehicle) {
       const normalizedResponse = normalizeVehicle(gptResponse);
       const matchedVehicle = Object.keys(tireData).find((key) =>
