@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './App.css';
+import './index.css'; // Changed from './App.css'
 
-// Sample data (replace with a real database or API)
+// Sample data (replace with a real database or API later)
 const tireData: Record<string, { factory: string; largest: string }> = {
   '2012 nissan altima': {
     factory: '215/60R16 (16-inch wheels, 6.5J width, 5x114.3 PCD, 40mm offset)',
