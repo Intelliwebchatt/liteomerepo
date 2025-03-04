@@ -1,16 +1,96 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+body {
+  background-color: #000; /* Black background (set in index.html, reinforced here) */
+  color: #fff; /* White text */
+  font-family: 'Impact', 'Arial', sans-serif; /* Bold, rugged font */
+  margin: 0;
+  padding: 0;
 }
 
-.animate-fadeIn {
-  animation: fadeIn 0.3s ease-in-out;
+.app-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #000; /* Black container */
+}
+
+.header {
+  text-align: center;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #ff0000; /* Red underline */
+}
+
+.header h1 {
+  font-size: 40px;
+  color: #ff0000; /* Red title */
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.header p {
+  font-size: 20px;
+  color: #fff; /* White subtitle */
+  margin: 5px 0 0;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.prompt-input {
+  width: 100%;
+  height: 120px;
+  padding: 15px;
+  background-color: #1a1a1a; /* Dark gray for input */
+  color: #fff; /* White text */
+  border: 2px solid #ff0000; /* Red border */
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Arial', sans-serif; /* Cleaner font for readability */
+  resize: vertical;
+}
+
+.prompt-input::placeholder {
+  color: #bbb; /* Light gray placeholder */
+}
+
+.submit-btn {
+  width: 200px;
+  padding: 12px;
+  background-color: #ff0000; /* Red button */
+  color: #fff; /* White text */
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-family: 'Impact', 'Arial', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: center;
+}
+
+.submit-btn:hover {
+  background-color: #cc0000; /* Darker red on hover */
+}
+
+.output-box {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #1a1a1a; /* Dark gray for output */
+  border: 2px solid #ff0000; /* Red border */
+  border-radius: 8px;
+}
+
+.output-box h2 {
+  font-size: 24px;
+  color: #ff0000; /* Red heading */
+  margin: 0 0 10px;
+}
+
+.output-box pre {
+  margin: 0;
+  font-size: 16px;
+  color: #fff; /* White text */
+  white-space: pre-wrap;
+  font-family: 'Arial', sans-serif;
 }
