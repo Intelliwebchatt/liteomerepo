@@ -1,5 +1,5 @@
 body {
-  background-color: #000; /* Black background (set in index.html, reinforced here) */
+  background-color: #000; /* Black background */
   color: #fff; /* White text */
   font-family: 'Impact', 'Arial', sans-serif; /* Bold, rugged font */
   margin: 0;
@@ -38,6 +38,14 @@ body {
   gap: 15px;
 }
 
+.welcome-text {
+  font-size: 16px;
+  color: #fff; /* White text */
+  font-family: 'Arial', sans-serif; /* Readable font */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .prompt-input {
   width: 100%;
   height: 120px;
@@ -47,7 +55,7 @@ body {
   border: 2px solid #ff0000; /* Red border */
   border-radius: 8px;
   font-size: 16px;
-  font-family: 'Arial', sans-serif; /* Cleaner font for readability */
+  font-family: 'Arial', sans-serif;
   resize: vertical;
 }
 
@@ -87,10 +95,9 @@ body {
   margin: 0 0 10px;
 }
 
-.output-box pre {
-  margin: 0;
+.output-box p {
+  margin: 5px 0;
   font-size: 16px;
   color: #fff; /* White text */
-  white-space: pre-wrap;
   font-family: 'Arial', sans-serif;
 }
