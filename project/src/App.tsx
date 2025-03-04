@@ -1,64 +1,26 @@
 import React, { useState } from 'react';
-import './App.css'; // Assuming styles are moved here (or use index.css)
+import './App.css';
+
+// Sample data (replace with a real database or API)
+const tireData: Record<string, { factory: string; largest: string }> = {
+  '2012 nissan altima': {
+    factory: '215/60R16 (16-inch wheels, 6.5J width, 5x114.3 PCD, 40mm offset)',
+    largest: '235/45R18 (18-inch wheels, 8J width, 5x114.3 PCD, 35-40mm offset)',
+  },
+  // Add more vehicle data here
+};
 
 const App: React.FC = () => {
-  const [prompt, setPrompt] = useState('');
-  const [output, setOutput] = useState<any>(null);
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState<{ factory: string; largest: string } | null>(null);
 
-  const handleSubmit = async () => {
-    // Placeholder for your existing OpenAI API call
-    try {
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer YOUR_API_KEY_HERE', // Replace with your key
-        },
-        body: JSON.stringify({
-          model: 'gpt-3.5-turbo',
-          messages: [{ role: 'user', content: prompt }],
-        }),
-      });
-      const data = await response.json();
-      setOutput(data.choices[0].message.content); // Structured output
-    } catch (error) {
-      console.error('Error fetching OpenAI response:', error);
-      setOutput('Sorry, something went wrong. Try again!');
-    }
-  };
-
-  return (
-    <div className="app-container">
-      <header className="header">
-        <h1>RIDE with SHANE</h1>
-        <p>Tire & Wheel Expert</p>
-import React, { useState } from 'react';
-import './App.css'; // Assuming styles are moved here (or use index.css)
-
-const App: React.FC = () => {
-  const [prompt, setPrompt] = useState('');
-  const [output, setOutput] = useState<any>(null);
-
-  const handleSubmit = async () => {
-    // Placeholder for your existing OpenAI API call
-    try {
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer YOUR_API_KEY_HERE', // Replace with your key
-        },
-        body: JSON.stringify({
-          model: 'gpt-3.5-turbo',
-          messages: [{ role: 'user', content: prompt }],
-        }),
-      });
-      const data = await response.json();
-      setOutput(data.choices[0].message.content); // Structured output
-    } catch (error) {
-      console.error('Error fetching OpenAI response:', error);
-      setOutput('Sorry, something went wrong. Try again!');
-    }
+  const handleSubmit = () => {
+    const normalizedInput = input.toLowerCase().trim();
+    const result = tireData[normalizedInput] || {
+      factory: 'Not found. Please enter a valid vehicle (e.g., "2012 Nissan Altima").',
+      largest: 'N/A',
+    };
+    setOutput(result);
   };
 
   return (
@@ -68,41 +30,23 @@ const App: React.FC = () => {
         <p>Tire & Wheel Expert</p>
       </header>
       <main className="main-content">
+        <p className="welcome-text">
+          Welcome to RIDE with SHANE Tire and Wheel Expert. Enter your vehicle info (e.g., '2012 Nissan Altima') to get factory tire and wheel specs, plus the largest wheel and tire combo that fits without modifications.
+        </p>
         <textarea
           className="prompt-input"
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Ask Shane about tires or wheels (e.g., 'Best tires for my SUV?')"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Type your vehicle (e.g., '2012 Nissan Altima')"
         />
         <button className="submit-btn" onClick={handleSubmit}>
-          Get Shane’s Advice
+          Get Tire & Wheel Info
         </button>
         {output && (
           <div className="output-box">
             <h2>Shane’s Expertise:</h2>
-            <pre>{typeof output === 'string' ? output : JSON.stringify(output, null, 2)}</pre>
-          </div>
-        )}
-      </main>
-    </div>
-  );
-};
-
-export default App;      </header>
-      <main className="main-content">
-        <textarea
-          className="prompt-input"
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Ask Shane about tires or wheels (e.g., 'Best tires for my SUV?')"
-        />
-        <button className="submit-btn" onClick={handleSubmit}>
-          Get Shane’s Advice
-        </button>
-        {output && (
-          <div className="output-box">
-            <h2>Shane’s Expertise:</h2>
-            <pre>{typeof output === 'string' ? output : JSON.stringify(output, null, 2)}</pre>
+            <p><strong>Factory Specs:</strong> {output.factory}</p>
+            <p><strong>Largest Fit:</strong> {output.largest}</p>
           </div>
         )}
       </main>
