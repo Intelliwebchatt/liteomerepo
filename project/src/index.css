@@ -4,6 +4,7 @@ body {
   font-family: 'Impact', 'Arial', sans-serif; /* Bold, rugged font */
   margin: 0;
   padding: 0;
+  overflow-y: scroll; /* Consistent with index.html */
 }
 
 .app-container {
