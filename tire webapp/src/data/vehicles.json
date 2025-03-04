@@ -1,0 +1,232 @@
+[
+  {
+    "make": "Toyota",
+    "model": "Camry",
+    "year": 2022,
+    "trim": "LE",
+    "wheelSize": 16,
+    "tireSize": "205/65R16",
+    "boltPattern": "5x114.3",
+    "offset": 45
+  },
+  {
+    "make": "Toyota",
+    "model": "Camry",
+    "year": 2022,
+    "trim": "SE",
+    "wheelSize": 18,
+    "tireSize": "235/45R18",
+    "boltPattern": "5x114.3",
+    "offset": 45
+  },
+  {
+    "make": "Toyota",
+    "model": "Camry",
+    "year": 2022,
+    "trim": "XLE",
+    "wheelSize": 18,
+    "tireSize": "235/45R18",
+    "boltPattern": "5x114.3",
+    "offset": 45
+  },
+  {
+    "make": "Toyota",
+    "model": "Corolla",
+    "year": 2022,
+    "trim": "LE",
+    "wheelSize": 16,
+    "tireSize": "205/55R16",
+    "boltPattern": "5x100",
+    "offset": 40
+  },
+  {
+    "make": "Toyota",
+    "model": "Corolla",
+    "year": 2022,
+    "trim": "XSE",
+    "wheelSize": 18,
+    "tireSize": "225/40R18",
+    "boltPattern": "5x100",
+    "offset": 40
+  },
+  {
+    "make": "Honda",
+    "model": "Civic",
+    "year": 2022,
+    "trim": "LX",
+    "wheelSize": 16,
+    "tireSize": "215/55R16",
+    "boltPattern": "5x114.3",
+    "offset": 45
+  },
+  {
+    "make": "Honda",
+    "model": "Civic",
+    "year": 2022,
+    "trim": "Sport",
+    "wheelSize": 18,
+    "tireSize": "235/40R18",
+    "boltPattern": "5x114.3",
+    "offset": 45
+  },
+  {
+    "make": "Honda",
+    "model": "Accord",
+    "year": 2022,
+    "trim": "LX",
+    "wheelSize": 17,
+    "tireSize": "225/50R17",
+    "boltPattern": "5x114.3",
+    "offset": 45
+  },
+  {
+    "make": "Honda",
+    "model": "Accord",
+    "year": 2022,
+    "trim": "Sport",
+    "wheelSize": 19,
+    "tireSize": "235/40R19",
+    "boltPattern": "5x114.3",
+    "offset": 45
+  },
+  {
+    "make": "Ford",
+    "model": "F-150",
+    "year": 2022,
+    "trim": "XL",
+    "wheelSize": 17,
+    "tireSize": "245/70R17",
+    "boltPattern": "6x135",
+    "offset": 44
+  },
+  {
+    "make": "Ford",
+    "model": "F-150",
+    "year": 2022,
+    "trim": "Lariat",
+    "wheelSize": 20,
+    "tireSize": "275/55R20",
+    "boltPattern": "6x135",
+    "offset": 44
+  },
+  {
+    "make": "Chevrolet",
+    "model": "Silverado",
+    "year": 2022,
+    "trim": "WT",
+    "wheelSize": 17,
+    "tireSize": "255/70R17",
+    "boltPattern": "6x139.7",
+    "offset": 25
+  },
+  {
+    "make": "Chevrolet",
+    "model": "Silverado",
+    "year": 2022,
+    "trim": "LTZ",
+    "wheelSize": 20,
+    "tireSize": "275/60R20",
+    "boltPattern": "6x139.7",
+    "offset": 25
+  },
+  {
+    "make": "BMW",
+    "model": "3 Series",
+    "year": 2022,
+    "trim": "330i",
+    "wheelSize": 18,
+    "tireSize": "225/45R18",
+    "boltPattern": "5x112",
+    "offset": 30
+  },
+  {
+    "make": "BMW",
+    "model": "3 Series",
+    "year": 2022,
+    "trim": "M340i",
+    "wheelSize": 19,
+    "tireSize": "225/40R19",
+    "boltPattern": "5x112",
+    "offset": 30
+  },
+  {
+    "make": "Mercedes-Benz",
+    "model": "C-Class",
+    "year": 2022,
+    "trim": "C300",
+    "wheelSize": 18,
+    "tireSize": "225/45R18",
+    "boltPattern": "5x112",
+    "offset": 38
+  },
+  {
+    "make": "Mercedes-Benz",
+    "model": "C-Class",
+    "year": 2022,
+    "trim": "AMG C43",
+    "wheelSize": 19,
+    "tireSize": "225/40R19",
+    "boltPattern": "5x112",
+    "offset": 38
+  },
+  {
+    "make": "Audi",
+    "model": "A4",
+    "year": 2022,
+    "trim": "Premium",
+    "wheelSize": 17,
+    "tireSize": "225/50R17",
+    "boltPattern": "5x112",
+    "offset": 35
+  },
+  {
+    "make": "Audi",
+    "model": "A4",
+    "year": 2022,
+    "trim": "Prestige",
+    "wheelSize": 19,
+    "tireSize": "245/35R19",
+    "boltPattern": "5x112",
+    "offset": 35
+  },
+  {
+    "make": "Jeep",
+    "model": "Wrangler",
+    "year": 2022,
+    "trim": "Sport",
+    "wheelSize": 17,
+    "tireSize": "245/75R17",
+    "boltPattern": "5x127",
+    "offset": 44
+  },
+  {
+    "make": "Jeep",
+    "model": "Wrangler",
+    "year": 2022,
+    "trim": "Rubicon",
+    "wheelSize": 17,
+    "tireSize": "285/70R17",
+    "boltPattern": "5x127",
+    "offset": 44
+  },
+  {
+    "make": "Subaru",
+    "model": "Outback",
+    "year": 2022,
+    "trim": "Base",
+    "wheelSize": 17,
+    "tireSize": "225/65R17",
+    "boltPattern": "5x114.3",
+    "offset": 55
+  },
+  {
+    "make": "Subaru",
+    "model": "Outback",
+    "year": 2022,
+    "trim": "Touring XT",
+    "wheelSize": 18,
+    "tireSize": "225/60R18",
+    "boltPattern": "5x114.3",
+    "offset": 55
+  }
+]
